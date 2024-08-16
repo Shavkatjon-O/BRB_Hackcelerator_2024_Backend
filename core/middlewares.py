@@ -25,7 +25,7 @@ class ErrorHandlerMiddleware:
         if not settings.DEBUG:
             if exception:
                 message = (
-                    "**Project - cura.uz**\n\n"
+                    "**Project - admin.brb-titans.uz**\n\n"
                     "**Error time:** {error_time}\n\n"
                     "**Error message:** {error_message}\n\n"
                     "```python\n{error_traceback}\n```"
