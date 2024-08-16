@@ -28,12 +28,6 @@ urlpatterns = [
 
 urlpatterns += [
     path("api/v1/users/", include("apps.users.urls")),
-    path("api/v1/advices/", include("apps.advices.urls")),
-    # path("api/v1/appointments/", include("apps.appointments.urls"),
-    # path("api/v1/notifications/", include("apps.notifications.urls")),
-    # path("api/v1/chats/", include("apps.chats.urls"),
-    # path("api/v1/medications/", include("apps.medications.urls")),
-    path("api/v1/bot/", include("apps.bot.urls")),
 ]
 
 urlpatterns += [

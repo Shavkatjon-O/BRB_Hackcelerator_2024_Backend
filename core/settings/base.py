@@ -122,10 +122,6 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     )
 }
-TELEGRAM_WEBHOOK_URL = env.str("TELEGRAM_WEBHOOK_URL")
-TELEGRAM_BOT_TOKEN = env.str("TELEGRAM_BOT_TOKEN")
-
-OTP_EXPIRE_TIME = 120
 
 # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 

@@ -3,11 +3,11 @@ from core.settings.base import *
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "cura.falconsoft.uz",
+    "admin.brb-titans.uz",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://cura.falconsoft.uz",
+    "https://admin.brb-titans.uz",
 ]
 CSRF_COOKIE_SECURE = True
 
