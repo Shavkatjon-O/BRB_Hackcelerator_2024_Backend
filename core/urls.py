@@ -21,15 +21,17 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
+# external packages urls
 urlpatterns = [
-    path("", admin.site.urls),
     path("rosetta/", include("rosetta.urls")),
 ]
 
+# custom urls
 urlpatterns += [
     path("api/v1/users/", include("apps.users.urls")),
 ]
 
+# swagger urls
 urlpatterns += [
     path(
         "swagger<format>/", schema_view.without_ui(cache_timeout=0), name="schema-json"
@@ -40,6 +42,11 @@ urlpatterns += [
         name="schema-swagger-ui",
     ),
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
+]
+
+# admin urls
+urlpatterns += [
+    path("", admin.site.urls),
 ]
 
 if settings.DEBUG:
