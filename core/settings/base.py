@@ -113,12 +113,12 @@ JAZZMIN_SETTINGS = {
     "site_title": "BRB Titans",
     "site_header": "BRB Titans",
     "site_brand": "BRB Titans",
-    "site_logo": "img/brb-titans-logo.png",
+    "site_logo": "brb-titans-logo.png",
     # Welcome
     "welcome_sign": "Welcome to BRB Titans admin panel!",
-    "welcome_panel_logo": "img/brb-titans-logo.png",
+    "welcome_panel_logo": "brb-titans-logo.png",
     # Login
-    "login_logo": "img/brb-titans-logo.png",
+    "login_logo": "brb-titans-logo.png",
 }
 
 
