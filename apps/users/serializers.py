@@ -16,8 +16,11 @@ class SignupSerializer(serializers.ModelSerializer):
         }
 
     def create(self, validated_data):
-        user = User.objects.create_user(
-            email=validated_data["email"],
-            password=validated_data["password"],
-        )
-        return user
+        try:
+            user = User.objects.create_user(
+                email=validated_data["email"],
+                password=validated_data["password"],
+            )
+            return user
+        except Exception as e:
+            raise serializers.ValidationError(str(e))
