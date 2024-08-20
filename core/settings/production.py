@@ -27,4 +27,6 @@ LOGGER_CHAT_ID = env.str("LOGGER_CHAT_ID")
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_HEADERS = ["*"]
+CORS_ALLOW_HEADERS = [
+    "https://www.brb-titans.uz",
+]
