@@ -6,16 +6,17 @@ from apps.users.managers import UserManager
 
 
 class User(AbstractUser, BaseModel):
-    email = None
+    username = None
     first_name = None
     last_name = None
 
+    email = models.EmailField(unique=True)
     full_name = models.CharField(max_length=256)
 
     REQUIRED_FIELDS = []
-    USERNAME_FIELD = "username"
+    USERNAME_FIELD = "email"
 
     objects = UserManager()
 
     def __str__(self):
-        return self.username
+        return self.email
