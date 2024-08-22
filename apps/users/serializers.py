@@ -19,3 +19,12 @@ class SignupSerializer(serializers.ModelSerializer):
             return user
         except Exception as e:
             raise serializers.ValidationError(str(e))
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            "id",
+            "email",
+        )
