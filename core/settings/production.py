@@ -27,7 +27,7 @@ LOGGER_CHAT_ID = env.str("LOGGER_CHAT_ID")
 
 CORS_ALLOWED_ORIGINS = [
     "https://www.brb-titans.uz",
-    "https://brb-hackathon-frontend-shavkatjons-projects.vercel.app/",
+    "https://brb-hackathon-frontend-shavkatjons-projects.vercel.app",
 ]
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
