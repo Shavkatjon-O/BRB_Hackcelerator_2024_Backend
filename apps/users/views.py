@@ -15,7 +15,15 @@ class SignupView(generics.CreateAPIView):
     serializer_class = SignupSerializer
 
 
-class UserDetailView(generics.RetrieveUpdateAPIView):
+class UserDetailView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def get_object(self):
+        return self.request.user
+
+
+class UserDetailUpdateView(generics.UpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
