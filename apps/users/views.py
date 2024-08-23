@@ -4,8 +4,6 @@ from rest_framework.permissions import AllowAny
 from django.contrib.auth import get_user_model
 from apps.users.serializers import SignupSerializer, UserSerializer
 
-from rest_framework.response import Response
-from rest_framework import status
 
 User = get_user_model()
 
