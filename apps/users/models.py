@@ -24,6 +24,8 @@ class User(AbstractUser, BaseModel):
     employment_start_date = models.DateField(null=True, blank=True)
     skills = models.TextField(null=True, blank=True)
 
+    image = models.ImageField(upload_to="users/", null=True, blank=True)
+
     REQUIRED_FIELDS = []
     USERNAME_FIELD = "email"
 
