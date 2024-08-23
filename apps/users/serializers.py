@@ -36,4 +36,5 @@ class UserSerializer(serializers.ModelSerializer):
             "education",
             "employment_start_date",
             "skills",
+            "image",
         )
