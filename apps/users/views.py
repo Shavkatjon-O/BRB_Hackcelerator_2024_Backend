@@ -8,9 +8,10 @@ User = get_user_model()
 
 
 class SignupView(generics.CreateAPIView):
+    permission_classes = (AllowAny,)
+
     queryset = User.objects.all()
     serializer_class = SignupSerializer
-    permission_classes = (AllowAny,)
 
 
 class UserDetailView(generics.RetrieveAPIView):
