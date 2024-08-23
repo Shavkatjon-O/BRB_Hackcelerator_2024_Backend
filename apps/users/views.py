@@ -2,7 +2,11 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny
 
 from django.contrib.auth import get_user_model
-from apps.users.serializers import SignupSerializer, UserSerializer
+from apps.users.serializers import (
+    SignupSerializer,
+    UserSerializer,
+    UserUpdateSerializer,
+)
 
 
 User = get_user_model()
@@ -25,7 +29,7 @@ class UserDetailView(generics.RetrieveAPIView):
 
 class UserDetailUpdateView(generics.UpdateAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = UserUpdateSerializer
 
     def get_object(self):
         return self.request.user

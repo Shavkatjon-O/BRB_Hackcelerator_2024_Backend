@@ -38,3 +38,21 @@ class UserSerializer(serializers.ModelSerializer):
             "skills",
             "image",
         )
+
+
+class UserUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            "first_name",
+            "last_name",
+            "phone_number",
+            "date_of_birth",
+            "address",
+            "job_title",
+            "department",
+            "education",
+            "employment_start_date",
+            "skills",
+            "image",
+        )
