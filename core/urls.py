@@ -28,7 +28,7 @@ urlpatterns = [
 
 # custom urls
 urlpatterns += [
-    path("api/v1/users/", include("apps.users.urls")),
+    path("api/users/", include("apps.users.urls")),
 ]
 
 # swagger urls
@@ -46,7 +46,7 @@ urlpatterns += [
 
 # admin urls
 urlpatterns += [
-    path("", admin.site.urls),
+    path("admin/", admin.site.urls),
 ]
 
 if settings.DEBUG:

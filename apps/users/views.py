@@ -2,34 +2,26 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny
 
 from django.contrib.auth import get_user_model
-from apps.users.serializers import (
-    SignupSerializer,
-    UserSerializer,
-    UserUpdateSerializer,
-)
-
+from apps.users import serializers
 
 User = get_user_model()
 
 
-class SignupView(generics.CreateAPIView):
+class SignUpView(generics.CreateAPIView):
     permission_classes = (AllowAny,)
 
     queryset = User.objects.all()
-    serializer_class = SignupSerializer
+    serializer_class = serializers.SignUpSerializer
 
 
-class UserDetailView(generics.RetrieveAPIView):
+class UserProfileView(generics.RetrieveAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = serializers.UserProfileSerializer
 
     def get_object(self):
         return self.request.user
 
 
-class UserDetailUpdateView(generics.UpdateAPIView):
+class UserProfileUpdateView(generics.UpdateAPIView):
     queryset = User.objects.all()
-    serializer_class = UserUpdateSerializer
-
-    def get_object(self):
-        return self.request.user
+    serializer_class = serializers.UserProfileUpdateSerializer

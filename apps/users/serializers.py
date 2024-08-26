@@ -5,22 +5,24 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-class SignupSerializer(serializers.ModelSerializer):
+class SignUpSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
     class Meta:
         model = User
-        fields = ("email", "password")
+        fields = (
+            "email",
+            "password",
+        )
 
     def create(self, validated_data):
-        try:
-            user = User.objects.create_user(
-                email=validated_data["email"], password=validated_data["password"]
-            )
-            return user
-        except Exception as e:
-            raise serializers.ValidationError(str(e))
+        user = User.objects.create_user(
+            email=validated_data["email"], password=validated_data["password"]
+        )
+        return user
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
@@ -40,7 +42,7 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
 
-class UserUpdateSerializer(serializers.ModelSerializer):
+class UserProfileUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
