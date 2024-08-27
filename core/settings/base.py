@@ -21,6 +21,7 @@ DJANGO_APPS = [
 ]
 
 CUSTOM_APPS = [
+    "apps.bot",
     "apps.common",
     "apps.users",
 ]

@@ -19,3 +19,10 @@ setuptools==71.0.3
 django-cors-headers==4.4.0
 
 Pillow==10.4.0
+
+langchain==0.2.14
+langchain-openai==0.1.22
+langchain-community==0.2.12
+langchainhub==0.1.21
+
+faiss-cpu
