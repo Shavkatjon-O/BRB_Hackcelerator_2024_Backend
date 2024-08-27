@@ -7,3 +7,7 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class Distribution(BaseModel):
+    desktop_exe = models.FileField(upload_to="distributions/")
