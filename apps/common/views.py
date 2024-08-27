@@ -13,5 +13,5 @@ from rest_framework.permissions import AllowAny
 
 class DistributionView(RetrieveAPIView):
     serializer_class = DistributionSerializer
-    queryset = Distribution.objects.all().first()
+    queryset = Distribution.objects.all()
     permission_classes = [AllowAny]
