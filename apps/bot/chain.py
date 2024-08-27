@@ -39,7 +39,7 @@ format_docs = lambda docs: "\n\n".join(doc.page_content for doc in docs)
 # Initialize LLM and other components
 llm = ChatOpenAI(
     model="gpt-3.5-turbo",
-    temperature=0.8,
+    temperature=0.5,
 )
 # Pull RAG prompt from hub
 rag_prompt = hub.pull("rlm/rag-prompt")
