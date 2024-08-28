@@ -24,6 +24,7 @@ CUSTOM_APPS = [
     "apps.bot",
     "apps.common",
     "apps.users",
+    "apps.chats",
 ]
 
 THIRD_PARTY_APPS = [
