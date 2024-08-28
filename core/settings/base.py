@@ -24,6 +24,7 @@ CUSTOM_APPS = [
     "apps.common",
     "apps.users",
     "apps.approvals",
+    "apps.chats",
     "apps.assistants",
     "apps.events",
     "apps.meetings",
