@@ -29,6 +29,9 @@ urlpatterns += [
     path("api/users/", include("apps.users.urls")),
 ]
 
+if not settings.DEBUG:
+    urlpatterns += [path("api/bot/", include("apps.bot.urls"))]
+
 # Swagger urls
 urlpatterns += [
     path(
