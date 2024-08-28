@@ -27,9 +27,12 @@ urlpatterns = [path("rosetta/", include("rosetta.urls"))]
 # Custom urls
 urlpatterns += [
     path("api/users/", include("apps.users.urls")),
-    path("api/bot/", include("apps.bot.urls")),
+    # path("api/bot/", include("apps.bot.urls")),
     path("api/common/", include("apps.common.urls")),
 ]
+
+if not settings.DEBUG:
+    urlpatterns += [path("api/bot/", include("apps.bot.urls"))]
 
 # Swagger urls
 urlpatterns += [

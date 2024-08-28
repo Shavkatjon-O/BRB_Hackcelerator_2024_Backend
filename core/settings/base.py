@@ -32,6 +32,7 @@ THIRD_PARTY_APPS = [
     "rest_framework_simplejwt",
     "rosetta",
     "corsheaders",
+    "channels",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
@@ -68,7 +69,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "core.wsgi.application"
-
+ASGI_APPLICATION = "core.asgi.application"
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
