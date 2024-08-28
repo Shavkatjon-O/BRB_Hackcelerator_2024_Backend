@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-
 from apps.common.models import BaseModel
 
 User = get_user_model()
@@ -18,7 +17,6 @@ class Chat(BaseModel):
 class Message(BaseModel):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name="messages")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="messages")
-
     content = models.TextField()
 
     def __str__(self):

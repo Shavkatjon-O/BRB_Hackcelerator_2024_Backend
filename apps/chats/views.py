@@ -1,25 +1,55 @@
-from rest_framework import viewsets
-from .models import Chat, Message
-from .serializers import ChatSerializer, MessageSerializer
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework import generics
+from apps.chats import models, serializers
 
 
-# class ChatViewSet(RetrieveAPIView):
-#     queryset = Chat.objects.all()
-#     serializer_class = ChatSerializer
+class UserListView(generics.ListAPIView):
+    queryset = models.User.objects.all()
+    serializer_class = serializers.UserSerializer
 
 
-class ChatViewSet(RetrieveAPIView):
-    queryset = Chat.objects.all()
-    serializer_class = ChatSerializer
-
-
-class MessageViewSet(ListAPIView):
-    queryset = Message.objects.all()
-    serializer_class = MessageSerializer
+class ChatListView(generics.ListAPIView):
+    queryset = models.Chat.objects.all()
+    serializer_class = serializers.ChatSerializer
 
     def get_queryset(self):
-        chat_id = self.kwargs["chat_id"]
+        return self.queryset.filter(users=self.request.user)
 
-        print(self.queryset.filter(chat__id=chat_id))
-        return self.queryset.filter(chat__id=chat_id)
+
+class ChatCreateView(generics.CreateAPIView):
+    queryset = models.Chat.objects.all()
+    serializer_class = serializers.ChatSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(users=[self.request.user])
+
+
+class ChatDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Chat.objects.all()
+    serializer_class = serializers.ChatSerializer
+
+    def get_queryset(self):
+        return self.queryset.filter(users=self.request.user)
+
+
+class MessageListView(generics.ListAPIView):
+    queryset = models.Message.objects.all()
+    serializer_class = serializers.MessageSerializer
+
+    def get_queryset(self):
+        return self.queryset.filter(chat=self.kwargs["chat_id"])
+
+
+class MessageCreateView(generics.CreateAPIView):
+    queryset = models.Message.objects.all()
+    serializer_class = serializers.MessageSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+class MessageDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Message.objects.all()
+    serializer_class = serializers.MessageSerializer
+
+    def get_queryset(self):
+        return self.queryset.filter(chat=self.kwargs["chat_id"])
