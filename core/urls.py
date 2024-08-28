@@ -30,6 +30,7 @@ urlpatterns += [
     # path("api/bot/", include("apps.bot.urls")),
     path("api/common/", include("apps.common.urls")),
     path("api/chats/", include("apps.chats.urls")),
+    path("api/events/", include("apps.events.urls")),
 ]
 
 if not settings.DEBUG:
