@@ -163,3 +163,10 @@ SIMPLE_JWT = {
 # EMAIL_PORT = env.int("EMAIL_PORT")
 # EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS")
 # EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL")
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}

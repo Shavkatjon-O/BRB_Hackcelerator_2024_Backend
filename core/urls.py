@@ -28,6 +28,7 @@ urlpatterns = [path("rosetta/", include("rosetta.urls"))]
 urlpatterns += [
     path("api/users/", include("apps.users.urls")),
     path("api/events/", include("apps.events.urls")),
+    path("api/chats/", include("apps.chats.urls")),
 ]
 
 if not settings.DEBUG:
