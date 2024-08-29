@@ -11,7 +11,7 @@ class Event(BaseModel):
 
     title = models.CharField(max_length=256)
 
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
 
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
