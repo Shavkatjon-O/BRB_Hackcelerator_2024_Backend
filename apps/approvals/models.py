@@ -46,4 +46,4 @@ class Request(BaseModel):
     end_date = models.DateField()
 
     def __str__(self):
-        return f"{self.request_type} request by {self.user} for {self.start_date} - {self.end_date}"
+        return f"{self.request_type} request by {self.created_by} for {self.start_date} - {self.end_date}"
