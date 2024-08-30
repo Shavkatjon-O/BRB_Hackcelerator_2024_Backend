@@ -1,3 +1,8 @@
 from django.contrib import admin
+from apps.notifications.models import Notification
+from core.mixins import TabbedTranslationAdmin
 
-# Register your models here.
+
+@admin.register(Notification)
+class NotificationAdmin(TabbedTranslationAdmin):
+    pass
