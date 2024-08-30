@@ -36,6 +36,7 @@ THIRD_PARTY_APPS = [
     "drf_yasg",
     "rest_framework",
     "rest_framework_simplejwt",
+    "modeltranslation",
     "rosetta",
     "corsheaders",
     "channels",
