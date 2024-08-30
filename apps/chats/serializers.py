@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class MessageSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField()
+    user = UserSerializer()
 
     class Meta:
         model = Message
@@ -32,8 +32,8 @@ class MessageSerializer(serializers.ModelSerializer):
 
 
 class ChatSerializer(serializers.ModelSerializer):
-    users = UserSerializer(many=True)
     messages = MessageSerializer(many=True, read_only=True)
+    users = UserSerializer(many=True)
 
     class Meta:
         model = Chat

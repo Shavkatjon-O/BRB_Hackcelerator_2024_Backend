@@ -22,23 +22,39 @@
 # ]
 
 # urls.py
+# from django.urls import path
+# from .views import (
+#     ChatListCreateView,
+#     ChatDetailView,
+#     MessageListCreateView,
+#     MessageDetailView,
+#     UserListView,
+# )
+
+# urlpatterns = [
+#     path("", ChatListCreateView.as_view(), name="chat-list-create"),
+#     path("<int:pk>/", ChatDetailView.as_view(), name="chat-detail"),
+#     path(
+#         "<int:chat_id>/messages/",
+#         MessageListCreateView.as_view(),
+#         name="message-list-create",
+#     ),
+#     path("messages/<int:pk>/", MessageDetailView.as_view(), name="message-detail"),
+#     path("users/", UserListView.as_view(), name="user-list"),
+# ]
+
 from django.urls import path
-from .views import (
+
+from apps.chats.views import (
     ChatListCreateView,
-    ChatDetailView,
+    ChatRetrieveUpdateDestroyView,
     MessageListCreateView,
-    MessageDetailView,
-    UserListView,
+    MessageRetrieveUpdateDestroyView,
 )
 
 urlpatterns = [
-    path("", ChatListCreateView.as_view(), name="chat-list-create"),
-    path("<int:pk>/", ChatDetailView.as_view(), name="chat-detail"),
-    path(
-        "<int:chat_id>/messages/",
-        MessageListCreateView.as_view(),
-        name="message-list-create",
-    ),
-    path("messages/<int:pk>/", MessageDetailView.as_view(), name="message-detail"),
-    path("users/", UserListView.as_view(), name="user-list"),
+    path("chats/", ChatListCreateView.as_view()),
+    path("chats/<int:pk>/", ChatRetrieveUpdateDestroyView.as_view()),
+    path("messages/", MessageListCreateView.as_view()),
+    path("messages/<int:pk>/", MessageRetrieveUpdateDestroyView.as_view()),
 ]
