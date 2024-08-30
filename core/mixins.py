@@ -23,20 +23,21 @@ class TabbedTranslationMixin:
             elif all(not field.endswith(lang[0]) for lang in settings.LANGUAGES):
                 non_translated_fields.append(field)
 
-        fieldsets = tuple()
+        fieldsets = []
 
         if non_translated_fields:
-            fieldsets += ((_("General "), {"fields": non_translated_fields}),)
+            fieldsets.append((_("General"), {"fields": non_translated_fields}))
 
         for language in settings.LANGUAGES:
-            fieldsets += (
-                language[1],
-                {
-                    "fields": list(
-                        map(lambda x: x + "_" + language[0], translated_fields)
-                    )
-                },
+            lang_code = language[0]
+            lang_name = language[1]
+            fieldsets.append(
+                (
+                    lang_name,
+                    {"fields": [f"{field}_{lang_code}" for field in translated_fields]},
+                )
             )
+
         return fieldsets
 
 
