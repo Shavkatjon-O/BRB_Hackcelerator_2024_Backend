@@ -15,7 +15,6 @@ class SignUpView(generics.CreateAPIView):
 
 
 class UserProfileView(generics.RetrieveAPIView):
-    queryset = User.objects.all()
     serializer_class = serializers.UserProfileSerializer
 
     def get_object(self):
@@ -23,5 +22,7 @@ class UserProfileView(generics.RetrieveAPIView):
 
 
 class UserProfileUpdateView(generics.UpdateAPIView):
-    queryset = User.objects.all()
     serializer_class = serializers.UserProfileUpdateSerializer
+
+    def get_object(self):
+        return self.request.user
