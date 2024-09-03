@@ -6,8 +6,10 @@ User = get_user_model()
 
 
 class Chat(BaseModel):
-    title = models.CharField(max_length=256)
     users = models.ManyToManyField(User, related_name="chats")
+    title = models.CharField(max_length=256, null=True, blank=True)
+    image = models.ImageField(upload_to="groups/", null=True, blank=True)
+    is_group = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
