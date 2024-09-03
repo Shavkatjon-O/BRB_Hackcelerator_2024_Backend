@@ -12,7 +12,12 @@ class Chat(BaseModel):
     is_group = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.title
+        return self.title or f"Private chat {self.id}"
+
+    def save(self, *args, **kwargs):
+        if not self.is_group and self.users.count() > 2:
+            raise ValueError("Private chat can't have more than 2 users")
+        super().save(*args, **kwargs)
 
 
 class Message(BaseModel):
