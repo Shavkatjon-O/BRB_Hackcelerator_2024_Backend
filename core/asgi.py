@@ -1,5 +1,8 @@
 import os
 import environ
+import django
+
+django.setup()
 
 from django.urls import path
 from django.core.asgi import get_asgi_application
@@ -10,9 +13,6 @@ from channels.auth import AuthMiddlewareStack
 
 from apps.chats.consumers import ChatConsumer
 
-import django
-
-django.setup()
 
 env = environ.Env()
 env.read_env(".env")
