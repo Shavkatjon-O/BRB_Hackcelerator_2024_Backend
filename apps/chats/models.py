@@ -29,27 +29,27 @@ class Message(BaseModel):
         return self.text
 
 
-class DirectMessage(BaseModel):
-    sender = models.ForeignKey(User, on_delete=models.CASCADE)
-    receiver = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = models.TextField()
+# class DirectMessage(BaseModel):
+#     sender = models.ForeignKey(User, on_delete=models.CASCADE)
+#     receiver = models.ForeignKey(User, on_delete=models.CASCADE)
+#     text = models.TextField()
 
-    def __str__(self):
-        return self.text
-
-
-class Group(BaseModel):
-    title = models.CharField(max_length=256)
-    users = models.ManyToManyField(User, related_name="groups")
-
-    def __str__(self):
-        return self.title
+#     def __str__(self):
+#         return self.text
 
 
-class GroupMessage(BaseModel):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    text = models.TextField()
+# class Group(BaseModel):
+#     title = models.CharField(max_length=256)
+#     users = models.ManyToManyField(User, related_name="groups")
 
-    def __str__(self):
-        return self.text
+#     def __str__(self):
+#         return self.title
+
+
+# class GroupMessage(BaseModel):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     group = models.ForeignKey(Group, on_delete=models.CASCADE)
+#     text = models.TextField()
+
+#     def __str__(self):
+#         return self.text

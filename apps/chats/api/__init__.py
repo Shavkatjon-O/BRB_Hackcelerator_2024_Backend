@@ -1,3 +1,3 @@
-from .UsersList import *
+from .UserList import *
 from .MessageCreate import *
 from .MessagesList import *
