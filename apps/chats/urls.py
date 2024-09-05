@@ -15,5 +15,5 @@ urlpatterns = [
     path("group/", GroupChatListView.as_view(), name="group-chats"),
     path("group/<int:pk>/", GroupChatDetailView.as_view(), name="group-chat-detail"),
     path("messages/create/", MessageCreateView.as_view(), name="message-create"),
-    path("messages/", MessageListView.as_view(), name="messages"),
+    path("messages/<chat_id>/", MessageListView.as_view(), name="messages"),
 ]

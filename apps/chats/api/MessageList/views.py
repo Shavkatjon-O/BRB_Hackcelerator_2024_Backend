@@ -7,7 +7,7 @@ class MessageListView(ListAPIView):
     serializer_class = MessageListSerializer
 
     def get_queryset(self):
-        return Message.objects.filter(chat__users=self.request.user)
+        return Message.objects.filter(chat=self.kwargs["chat_id"])
 
     def get_object(self):
         return self.request.user
