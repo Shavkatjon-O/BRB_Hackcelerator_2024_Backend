@@ -2,6 +2,7 @@ from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from .serializers import UserListSerializer
 from apps.users.models import User
+from apps.chats.models import Chat
 
 
 class UserListView(ListAPIView):
@@ -10,7 +11,12 @@ class UserListView(ListAPIView):
     queryset = User.objects.all()
 
     def get_queryset(self):
-        return User.objects.exclude(id=self.request.user.id)
+        current_user = self.request.user
+        return User.objects.exclude(
+            id__in=Chat.objects.filter(users=current_user).values_list(
+                "users", flat=True
+            )
+        ).exclude(id=current_user.id)
 
 
 __all__ = ("UserListView",)
