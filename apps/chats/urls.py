@@ -1,28 +1,19 @@
-# from django.urls import path
-# from apps.chats.views import (
-#     UserListView,
-#     MessageListView,
-#     MessageDetailView,
-#     ChatListView,
-#     ChatDetailView,
-# )
-
-# urlpatterns = [
-#     path("users/", UserListView.as_view(), name="users"),
-#     path("chats/", ChatListView.as_view(), name="chats"),
-#     path("chats/<int:pk>/", ChatDetailView.as_view(), name="chat-detail"),
-#     path("chats/<int:chat_id>/messages/", MessageListView.as_view(), name="messages"),
-#     path("messages/<int:pk>/", MessageDetailView.as_view(), name="message-detail"),
-# ]
-
 from django.urls import path
 
 from apps.chats.api.UserList import UserListView
+from apps.chats.api.DirectChatDetail import DirectChatDetailView
+from apps.chats.api.DirectChatList import DirectChatListView
+from apps.chats.api.GroupChatDetail import GroupChatDetailView
+from apps.chats.api.GroupChatList import GroupChatListView
 from apps.chats.api.MessageCreate import MessageCreateView
-from apps.chats.api.MessagesList import MessagesListView
+from apps.chats.api.MessageList import MessageListView
 
 urlpatterns = [
     path("users/", UserListView.as_view(), name="users"),
+    path("direct/", DirectChatListView.as_view(), name="direct-chats"),
+    path("direct/<int:pk>/", DirectChatDetailView.as_view(), name="direct-chat-detail"),
+    path("group/", GroupChatListView.as_view(), name="group-chats"),
+    path("group/<int:pk>/", GroupChatDetailView.as_view(), name="group-chat-detail"),
     path("messages/create/", MessageCreateView.as_view(), name="message-create"),
-    path("messages/", MessagesListView.as_view(), name="messages"),
+    path("messages/", MessageListView.as_view(), name="messages"),
 ]

@@ -3,7 +3,7 @@ from .serializers import MessageListSerializer
 from apps.chats.models import Message
 
 
-class MessagesListView(ListAPIView):
+class MessageListView(ListAPIView):
     serializer_class = MessageListSerializer
 
     def get_queryset(self):
@@ -13,4 +13,4 @@ class MessagesListView(ListAPIView):
         return self.request.user
 
 
-__all__ = ("MessagesListView",)
+__all__ = ("MessageListView",)
