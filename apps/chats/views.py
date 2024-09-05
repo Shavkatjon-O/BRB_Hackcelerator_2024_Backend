@@ -2,7 +2,12 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
 from apps.chats.models import Chat, Message
-from apps.chats.serializers import UserSerializer, ChatSerializer, MessageSerializer
+from apps.chats.serializers import (
+    UserSerializer,
+    ChatSerializer,
+    MessageSerializer,
+    ChatDetailSerializer,
+)
 from apps.users.models import User
 
 
@@ -44,3 +49,9 @@ class MessageDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = MessageSerializer
     queryset = Message.objects.all()
+
+
+class ChatRetrieveView(generics.RetrieveAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = ChatDetailSerializer
+    queryset = Chat.objects.all()

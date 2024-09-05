@@ -18,9 +18,14 @@
 from django.urls import path
 
 from apps.chats.api.UsersList import UsersListView
+from apps.chats.api.MessageCreate import MessageCreateView
 from apps.chats.api.MessagesList import MessagesListView
+
+from apps.chats.views import UserListView
 
 urlpatterns = [
     path("users/", UsersListView.as_view(), name="users"),
+    path("messages/create/", MessageCreateView.as_view(), name="message-create"),
     path("messages/", MessagesListView.as_view(), name="messages"),
+    path("<int:pk>/", UserListView.as_view(), name="users"),
 ]

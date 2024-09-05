@@ -42,3 +42,15 @@ class MessageSerializer(serializers.ModelSerializer):
             "text",
             "created_at",
         )
+
+
+class ChatDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Chat
+        fields = (
+            "id",
+            "title",
+            "image",
+            "is_group",
+            "users",
+        )
