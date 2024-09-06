@@ -1,32 +1,37 @@
 from django.db import models
-from django.contrib.auth import get_user_model
 from apps.common.models import BaseModel
+from apps.users.models import User
 
-User = get_user_model()
+
+class DirectChat(BaseModel):
+    user1 = models.ForeignKey(User, on_delete=models.CASCADE)
+    user2 = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ("user1", "user2")
 
 
-class Chat(BaseModel):
-    users = models.ManyToManyField(User, related_name="chats")
-    title = models.CharField(max_length=256, null=True, blank=True)
-    image = models.ImageField(upload_to="groups/", null=True, blank=True)
-    is_group = models.BooleanField(default=False)
+class DirectMessage(BaseModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    chat = models.ForeignKey(DirectChat, on_delete=models.CASCADE)
+    text = models.TextField()
 
     def __str__(self):
-        return self.title or f"Private chat {self.id}"
-
-    def save(self, *args, **kwargs):
-        if not self.is_group and self.users.count() > 2:
-            raise ValueError("Private chat can't have more than 2 users")
-        super().save(*args, **kwargs)
+        return self.text
 
 
-class Message(BaseModel):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="messages"
-    )  # sender
-    chat = models.ForeignKey(
-        Chat, on_delete=models.CASCADE, related_name="messages"
-    )  # receiver
+class GroupChat(BaseModel):
+    users = models.ManyToManyField(User, related_name="group_chats")
+    image = models.ImageField(upload_to="groups", null=True, blank=True)
+    title = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.title
+
+
+class GroupMessage(BaseModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    chat = models.ForeignKey(GroupChat, on_delete=models.CASCADE)
     text = models.TextField()
 
     def __str__(self):
