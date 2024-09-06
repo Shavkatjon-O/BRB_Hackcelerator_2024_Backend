@@ -1,15 +1,15 @@
 from rest_framework import serializers
-from apps.chats.models import Chat
+from apps.chats.models import GroupChat
 
 
 class GroupChatListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Chat
+        model = GroupChat
         fields = (
             "id",
             "users",
-            "title",
             "image",
+            "title",
         )
 
 
