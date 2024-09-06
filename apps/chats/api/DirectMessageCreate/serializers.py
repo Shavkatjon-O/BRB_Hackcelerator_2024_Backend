@@ -1,17 +1,17 @@
 from rest_framework import serializers
-from apps.chats.models import Message
+from apps.chats.models import DirectMessage
 
 
-class MessageCreateSerializer(serializers.ModelSerializer):
+class DirectMessageCreateSerializer(serializers.ModelSerializer):
     text = serializers.CharField(max_length=1000)
     chat_id = serializers.IntegerField()
 
     class Meta:
-        model = Message
+        model = DirectMessage
         fields = (
             "text",
             "chat_id",
         )
 
 
-__all__ = ("MessageCreateSerializer",)
+__all__ = ("DirectMessageCreateSerializer",)

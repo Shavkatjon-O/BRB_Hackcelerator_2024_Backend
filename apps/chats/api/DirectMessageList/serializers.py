@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from apps.chats.models import Message
+from apps.chats.models import DirectMessage
 
 
-class MessageListSerializer(serializers.ModelSerializer):
+class DirectMessageListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Message
+        model = DirectMessage
         fields = (
             "id",
             "user",
@@ -14,4 +14,4 @@ class MessageListSerializer(serializers.ModelSerializer):
         )
 
 
-__all__ = ("MessageListSerializer",)
+__all__ = ("DirectMessageListSerializer",)
