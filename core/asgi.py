@@ -11,6 +11,7 @@ from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.security.websocket import AllowedHostsOriginValidator
 from channels.auth import AuthMiddlewareStack
 
+from apps.chats.routing import websocket_urlpatterns
 from apps.chats.consumers import ChatConsumer
 
 
@@ -23,9 +24,7 @@ application = ProtocolTypeRouter(
         "websocket": AllowedHostsOriginValidator(
             AuthMiddlewareStack(
                 URLRouter(
-                    [
-                        path("ws/chats/<int:chat_id>/", ChatConsumer.as_asgi()),
-                    ],
+                    websocket_urlpatterns,
                 ),
             ),
         ),
