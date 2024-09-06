@@ -13,13 +13,12 @@ class UserListView(ListAPIView):
     def get_queryset(self):
         current_user = self.request.user
 
-        exclude_users = (
-            DirectChat.objects.filter(
-                Q(user1=current_user.id) | Q(user2=current_user.id)
-            )
-            .values_list("user1", "user2")
-            .flat()
-        )
+        exclude_users = DirectChat.objects.filter(
+            Q(user1=current_user.id) | Q(user2=current_user.id)
+        ).values_list("user1", "user2")
+
+        exclude_users = set(user for pair in exclude_users for user in pair)
+
         return User.objects.exclude(
             id__in=exclude_users,
         ).exclude(
