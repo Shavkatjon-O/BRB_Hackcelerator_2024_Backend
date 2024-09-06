@@ -1,23 +1,14 @@
 from rest_framework import serializers
-from apps.chats.models import Chat
+from apps.chats.models import DirectChat
 
 
 class DirectChatCreateSerializer(serializers.ModelSerializer):
-    users = serializers.ListField(child=serializers.IntegerField())
-
     class Meta:
-        model = Chat
+        model = DirectChat
         fields = (
-            "id",
-            "users",
+            "user1",
+            "user2",
         )
-
-    def validate_users(self, value):
-        if len(value) != 1:
-            raise serializers.ValidationError(
-                "You must specify exactly one other user for a private chat."
-            )
-        return value
 
 
 __all__ = ("DirectChatCreateSerializer",)

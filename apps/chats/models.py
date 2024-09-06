@@ -4,8 +4,8 @@ from apps.users.models import User
 
 
 class DirectChat(BaseModel):
-    user1 = models.ForeignKey(User, on_delete=models.CASCADE)
-    user2 = models.ForeignKey(User, on_delete=models.CASCADE)
+    user1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user1")
+    user2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user2")
 
     class Meta:
         unique_together = ("user1", "user2")

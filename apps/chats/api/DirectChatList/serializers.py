@@ -1,13 +1,14 @@
 from rest_framework import serializers
-from apps.chats.models import Chat
+from apps.chats.models import DirectChat
 
 
 class DirectChatListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Chat
+        model = DirectChat
         fields = (
             "id",
-            "users",
+            "user1",
+            "user2",
         )
 
 
