@@ -16,6 +16,7 @@ urlpatterns = [
     path("directs/create/", DirectChatCreateView.as_view()),
     path("directs/", DirectChatListView.as_view()),
     path("directs/<int:pk>/", DirectChatDetailView.as_view()),
+    path("directs/<int:pk>/messages/create/", DirectMessageCreateView.as_view()),
     path("directs/<int:pk>/messages/", DirectMessageListView.as_view()),
     path("groups/", GroupChatListView.as_view()),
     path("groups/<int:pk>/", GroupChatDetailView.as_view()),

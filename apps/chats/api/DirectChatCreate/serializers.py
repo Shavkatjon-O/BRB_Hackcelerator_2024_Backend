@@ -6,6 +6,7 @@ class DirectChatCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = DirectChat
         fields = (
+            "id",
             "user1",
             "user2",
         )
