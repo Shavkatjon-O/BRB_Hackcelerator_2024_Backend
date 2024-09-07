@@ -1,20 +1,20 @@
 from rest_framework import serializers
-from apps.chats.models import DirectChat
 
+from apps.chats.models import DirectChat
 from apps.chats.api.UserList.serializers import UserListSerializer
 
 
 class DirectChatListSerializer(serializers.ModelSerializer):
-    user1 = UserListSerializer()
-    user2 = UserListSerializer()
+    partner = serializers.SerializerMethodField()
 
     class Meta:
         model = DirectChat
-        fields = (
-            "id",
-            "user1",
-            "user2",
-        )
+        fields = ("id", "partner")
+
+    def get_partner(self, obj):
+        if obj.user1 == self.context["request"].user:
+            return UserListSerializer(obj.user2).data
+        return UserListSerializer(obj.user1).data
 
 
 __all__ = ("DirectChatListSerializer",)
