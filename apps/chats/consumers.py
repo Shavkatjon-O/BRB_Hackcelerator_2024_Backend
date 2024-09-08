@@ -24,25 +24,50 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
-        message = text_data_json["message"]
+        message_data = text_data_json.get("message", {})
 
-        # Send message to room group
+        # Ensure message includes the required fields
+        user_data = message_data.get("user", {})
+        chat_data = message_data.get("chat", {})
+
+        # Broadcast message to the group
         await self.channel_layer.group_send(
             self.chat_group_name,
             {
                 "type": "chat_message",
-                "message": message["text"],
+                "id": message_data.get("id"),  # If applicable, include message ID
                 "user": {
-                    "email": message["user"]["email"],
-                    "first_name": message["user"]["first_name"],
-                    "last_name": message["user"]["last_name"],
-                    "image": message["user"]["image"],
+                    "email": user_data.get("email", ""),
+                    "first_name": user_data.get("first_name", ""),
+                    "last_name": user_data.get("last_name", ""),
+                    "image": user_data.get("image", ""),
                 },
-                "chat": message["chat"]["id"],
-                "created_at": message.get("created_at", ""),
+                "chat": {
+                    "id": chat_data.get("id", ""),
+                    "partner": {
+                        "email": chat_data.get("partner", {}).get("email", ""),
+                        "first_name": chat_data.get("partner", {}).get(
+                            "first_name", ""
+                        ),
+                        "last_name": chat_data.get("partner", {}).get("last_name", ""),
+                        "image": chat_data.get("partner", {}).get("image", ""),
+                    },
+                },
+                "text": message_data.get("text", ""),
+                "created_at": message_data.get("created_at", ""),
             },
         )
 
     async def chat_message(self, event):
-        # Send message to WebSocket
-        await self.send(text_data=json.dumps(event))
+        # Send the event back to the WebSocket
+        await self.send(
+            text_data=json.dumps(
+                {
+                    "id": event.get("id"),  # Ensure ID is included if applicable
+                    "user": event.get("user"),
+                    "chat": event.get("chat"),
+                    "text": event.get("text"),
+                    "created_at": event.get("created_at", ""),
+                }
+            )
+        )
