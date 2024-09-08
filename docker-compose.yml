@@ -19,7 +19,7 @@ services:
       context: ./
       dockerfile: compose/django/Dockerfile
     container_name: brb_titans_web
-    command: uvicorn core.asgi:application --host 0.0.0.0 --port ${DJANGO_PORT} --workers 9
+    command: uvicorn core.asgi:application --host 0.0.0.0 --port ${DJANGO_PORT} --lifespan off --workers 9
     volumes:
       - ./:/app
       - ./static:/home/app/web/static
