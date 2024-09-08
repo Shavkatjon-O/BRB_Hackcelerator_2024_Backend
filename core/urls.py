@@ -32,8 +32,8 @@ urlpatterns += [
     path("api/chats/", include("apps.chats.urls")),
 ]
 
-if not settings.DEBUG:
-    urlpatterns += [path("api/bot/", include("apps.bot.urls"))]
+# if not settings.DEBUG:
+#     urlpatterns += [path("api/bot/", include("apps.bot.urls"))]
 
 # Swagger urls
 urlpatterns += [
