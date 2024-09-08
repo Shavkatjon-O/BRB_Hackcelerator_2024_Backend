@@ -21,7 +21,6 @@ def notify_new_message(sender, instance, created, **kwargs):
         partner = get_chat_partner(instance)
 
         try:
-            # Only send WebSocket message after message is fully saved to DB
             async_to_sync(channel_layer.group_send)(
                 f"chat_{instance.chat.id}",
                 {
