@@ -5,6 +5,12 @@ from apps.common.models import BaseModel
 from apps.users.managers import UserManager
 
 
+class UserTypeChoices(models.TextChoices):
+    EMPLOYEE = "EMPLOYEE", "Employee"
+    LOAN_MANAGER = "LOAN_MANAGER", "Loan Manager"
+    BANK_TELLER = "BANK_TELLER", "Bank Teller"
+
+
 class User(AbstractUser, BaseModel):
     username = None
 
@@ -25,6 +31,10 @@ class User(AbstractUser, BaseModel):
     skills = models.TextField(null=True, blank=True)
 
     image = models.ImageField(upload_to="users/", null=True, blank=True)
+
+    user_type = models.CharField(
+        max_length=32, choices=UserTypeChoices.choices, default=UserTypeChoices.EMPLOYEE
+    )
 
     REQUIRED_FIELDS = []
     USERNAME_FIELD = "email"
