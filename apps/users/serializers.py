@@ -7,6 +7,7 @@ User = get_user_model()
 
 class SignUpSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
+    user_type = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
@@ -17,6 +18,7 @@ class SignUpSerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
+        print(validated_data)
         user = User.objects.create_user(
             email=validated_data["email"],
             user_type=validated_data["user_type"],
