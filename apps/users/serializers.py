@@ -12,12 +12,15 @@ class SignUpSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             "email",
+            "user_type",
             "password",
         )
 
     def create(self, validated_data):
         user = User.objects.create_user(
-            email=validated_data["email"], password=validated_data["password"]
+            email=validated_data["email"],
+            user_type=validated_data["user_type"],
+            password=validated_data["password"],
         )
         return user
 
@@ -39,6 +42,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
             "employment_start_date",
             "skills",
             "image",
+            "user_type",
         )
 
 
@@ -57,4 +61,5 @@ class UserProfileUpdateSerializer(serializers.ModelSerializer):
             "employment_start_date",
             "skills",
             "image",
+            "user_type",
         )
