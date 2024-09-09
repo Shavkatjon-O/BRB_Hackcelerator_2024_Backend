@@ -3,11 +3,17 @@ from django.http import HttpResponse
 from django.urls import re_path, path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.shortcuts import redirect
 
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 
 from rest_framework import permissions
+
+
+def redirect_base_to_admin(request):
+    return redirect("admin/")
+
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -50,6 +56,7 @@ urlpatterns += [
 
 # Admin urls
 urlpatterns += [
+    path("", redirect_base_to_admin),
     path("admin/", admin.site.urls),
 ]
 
