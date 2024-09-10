@@ -8,6 +8,7 @@ from apps.anons.api.AnonsReadUpdate.serializers import AnonsReadUpdateSerializer
 class AnonsReadUpdate(UpdateAPIView):
     serializer_class = AnonsReadUpdateSerializer
     permission_classes = (IsAuthenticated,)
+    queryset = Anons.objects.all()
 
     def perform_update(self, serializer):
         anons = Anons.objects.get(pk=self.kwargs["pk"])
