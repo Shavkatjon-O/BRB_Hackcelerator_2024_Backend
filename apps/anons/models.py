@@ -7,21 +7,13 @@ class Anons(BaseModel):
     title = models.CharField(max_length=256)
     description = models.TextField()
 
+    read_by = models.ManyToManyField(
+        User, related_name="read_anons", null=True, blank=True
+    )
+
     class Meta:
         verbose_name = "Anons"
         verbose_name_plural = "Anons"
 
     def __str__(self):
         return self.title
-
-
-class AnonsReader(BaseModel):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    anons = models.ForeignKey(Anons, on_delete=models.CASCADE)
-    is_read = models.BooleanField(default=False)
-
-    class Meta:
-        unique_together = ("user", "anons")
-
-    def __str__(self):
-        return f"{self.user} - {self.anons}"
