@@ -12,6 +12,7 @@ class AnonsDetailSerializer(serializers.ModelSerializer):
             "title",
             "description",
             "created_at",
+            "is_read",
         )
 
     def get_is_read(self, obj):
