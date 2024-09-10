@@ -1,3 +1,4 @@
 from django.contrib import admin
+from apps.anons.models import Anons
 
-# Register your models here.
+admin.site.register(Anons)
