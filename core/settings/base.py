@@ -21,16 +21,16 @@ DJANGO_APPS = [
 ]
 
 CUSTOM_APPS = [
-    "apps.common",
-    "apps.users",
     "apps.anons",
     "apps.approvals",
-    "apps.chats",
     "apps.bot",
+    "apps.chats",
+    "apps.common",
     "apps.events",
     "apps.meetings",
     "apps.notifications",
-    "apps.tasks",
+    "apps.planners",
+    "apps.users",
 ]
 
 THIRD_PARTY_APPS = [
