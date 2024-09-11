@@ -38,6 +38,7 @@ urlpatterns += [
     path("api/approvals/", include("apps.approvals.urls")),
     path("api/chats/", include("apps.chats.urls")),
     path("api/tasks/", include("apps.planners.urls")),
+    path("api/clients/", include("apps.clients.urls")),
 ]
 
 # if not settings.DEBUG:
