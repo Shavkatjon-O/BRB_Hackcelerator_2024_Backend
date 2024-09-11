@@ -23,7 +23,7 @@ DJANGO_APPS = [
 CUSTOM_APPS = [
     "apps.anons",
     "apps.approvals",
-    "apps.bot",
+    "apps.assistants",
     "apps.chats",
     "apps.common",
     "apps.events",
