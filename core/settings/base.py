@@ -22,13 +22,18 @@ DJANGO_APPS = [
 
 CUSTOM_APPS = [
     "apps.anons",
+    "apps.applications",
     "apps.approvals",
     "apps.assistants",
+    "apps.borrowers",
     "apps.chats",
+    "apps.clients",
     "apps.common",
     "apps.events",
+    "apps.loans",
     "apps.meetings",
     "apps.notifications",
+    "apps.payments",
     "apps.planners",
     "apps.users",
 ]
