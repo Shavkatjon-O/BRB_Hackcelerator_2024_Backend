@@ -7,9 +7,7 @@ class Anons(BaseModel):
     title = models.CharField(max_length=256)
     description = models.TextField()
 
-    read_by = models.ManyToManyField(
-        User, related_name="read_anons", null=True, blank=True
-    )
+    read_by = models.ManyToManyField(User, related_name="read_anons")
 
     class Meta:
         verbose_name = "Anons"

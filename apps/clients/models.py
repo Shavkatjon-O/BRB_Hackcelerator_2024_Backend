@@ -26,9 +26,9 @@ class Client(BaseModel):
     address = models.TextField()
 
     identification_number = models.CharField(max_length=64, unique=True)
-    credit_score = models.IntegerField(blank=True, null=True)
+    credit_score = models.IntegerField(null=True, blank=True)
 
-    image = models.ImageField(upload_to="clients", blank=True, null=True)
+    image = models.ImageField(upload_to="clients", null=True, blank=True)
 
     is_active = models.BooleanField(default=True)
 
