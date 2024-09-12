@@ -57,6 +57,8 @@ class Loan(BaseModel):
         null=True,
     )
 
+    is_over_due = models.BooleanField(default=False)
+
     def __str__(self):
         return f"Loan {self.reference_number} - {self.client} - {self.amount_disbursed} {self.currency}"
 
