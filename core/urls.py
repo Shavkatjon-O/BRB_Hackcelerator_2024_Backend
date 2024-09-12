@@ -41,6 +41,9 @@ urlpatterns += [
     path("api/clients/", include("apps.clients.urls")),
     path("api/payments/", include("apps.payments.urls")),
     path("api/cards/", include("apps.cards.urls")),
+    path("api/applications/", include("apps.applications.urls")),
+    path("api/loans/", include("apps.loans.urls")),
+    path("api/borrowers/", include("apps.borrowers.urls")),
 ]
 
 # if not settings.DEBUG:
