@@ -44,10 +44,8 @@ urlpatterns += [
     path("api/applications/", include("apps.applications.urls")),
     path("api/loans/", include("apps.loans.urls")),
     path("api/borrowers/", include("apps.borrowers.urls")),
+    path("api/assistants/", include("apps.assistants.urls")),
 ]
-
-# if not settings.DEBUG:
-#     urlpatterns += [path("api/bot/", include("apps.bot.urls"))]
 
 # Swagger urls
 urlpatterns += [
