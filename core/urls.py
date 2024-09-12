@@ -40,6 +40,7 @@ urlpatterns += [
     path("api/tasks/", include("apps.planners.urls")),
     path("api/clients/", include("apps.clients.urls")),
     path("api/payments/", include("apps.payments.urls")),
+    path("api/cards/", include("apps.cards.urls")),
 ]
 
 # if not settings.DEBUG:
