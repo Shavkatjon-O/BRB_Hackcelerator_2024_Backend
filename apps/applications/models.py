@@ -65,8 +65,8 @@ class Application(BaseModel):
         return f"Application {self.reference_number} - {self.client} - {self.amount_requested} {self.currency}"
 
     class Meta:
-        verbose_name = "Loan Application"
-        verbose_name_plural = "Loan Applications"
+        verbose_name = "Application"
+        verbose_name_plural = "Applications"
         ordering = ["-created_at"]
 
 
