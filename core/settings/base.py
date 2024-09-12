@@ -26,6 +26,7 @@ CUSTOM_APPS = [
     "apps.approvals",
     "apps.assistants",
     "apps.borrowers",
+    "apps.cards",
     "apps.chats",
     "apps.clients",
     "apps.common",
