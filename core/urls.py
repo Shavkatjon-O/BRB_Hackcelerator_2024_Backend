@@ -39,6 +39,7 @@ urlpatterns += [
     path("api/chats/", include("apps.chats.urls")),
     path("api/tasks/", include("apps.planners.urls")),
     path("api/clients/", include("apps.clients.urls")),
+    path("api/payments/", include("apps.payments.urls")),
 ]
 
 # if not settings.DEBUG:
