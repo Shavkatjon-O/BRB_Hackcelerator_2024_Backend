@@ -46,12 +46,12 @@ class Payment(BaseModel):
         max_length=3, choices=CurrencyChoices.choices, default=CurrencyChoices.UZS
     )
 
-    payment_type = models.CharField(max_length=20, choices=PaymentTypeChoices.choices)
+    payment_type = models.CharField(max_length=32, choices=PaymentTypeChoices.choices)
     payment_method = models.CharField(
-        max_length=20, choices=PaymentMethodChoices.choices
+        max_length=32, choices=PaymentMethodChoices.choices
     )
 
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
     description = models.TextField(blank=True, null=True)
 
     created_by = models.ForeignKey(
@@ -65,7 +65,7 @@ class Payment(BaseModel):
         null=True,
     )
 
-    reference_number = models.CharField(max_length=100, unique=True)
+    reference_number = models.CharField(max_length=128, unique=True)
     status = models.CharField(
         max_length=20,
         choices=PaymentStatusChoices.choices,
