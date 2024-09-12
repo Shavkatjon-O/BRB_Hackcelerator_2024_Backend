@@ -16,7 +16,7 @@ env.read_env(".env")
 
 
 def get_chain():
-    doc_path = os.path.join(settings.BASE_DIR, "chat_bot_database.txt")
+    doc_path = os.path.join(settings.BASE_DIR, "ai-database.txt")
     data = TextLoader(doc_path)
     docs = data.load()
 
