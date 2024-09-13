@@ -38,3 +38,7 @@ class Client(BaseModel):
     class Meta:
         verbose_name = "Client"
         verbose_name_plural = "Clients"
+
+
+class Document(BaseModel):
+    file = models.FileField(upload_to="clients/documents")

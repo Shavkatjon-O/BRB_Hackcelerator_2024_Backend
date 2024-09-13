@@ -6,10 +6,13 @@ from apps.clients.api.ClientsDetail.views import ClientsDetailAPIView
 from apps.clients.api.ClientsUpdate.views import ClientsUpdateAPIView
 from apps.clients.api.ClientsDelete.views import ClientsDeleteAPIView
 
+from .views import DocumentGetAPIView
+
 urlpatterns = [
     path("", ClientsListAPIView.as_view(), name="clients-list"),
     path("create/", ClientsCreateAPIView.as_view(), name="clients-create"),
     path("<int:pk>/", ClientsDetailAPIView.as_view(), name="clients-detail"),
     path("<int:pk>/update/", ClientsUpdateAPIView.as_view(), name="clients-update"),
     path("<int:pk>/delete/", ClientsDeleteAPIView.as_view(), name="clients-delete"),
+    path("document/", DocumentGetAPIView.as_view(), name="document-get"),
 ]
