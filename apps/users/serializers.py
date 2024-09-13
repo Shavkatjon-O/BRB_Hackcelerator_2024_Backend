@@ -51,4 +51,15 @@ class UserProfileSerializer(serializers.ModelSerializer):
 class UserProfileUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = "__all__"
+        fields = [
+            "first_name",
+            "last_name",
+            "phone_number",
+            "date_of_birth",
+            "address",
+            "job_title",
+            "department",
+            "education",
+            "employment_start_date",
+            "skills",
+        ]
