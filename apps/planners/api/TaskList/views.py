@@ -8,9 +8,7 @@ from apps.planners.models import Task
 class TaskListAPIView(ListAPIView):
     serializer_class = TaskSerializer
     permission_classes = (IsAuthenticated,)
-
-    def get_queryset(self):
-        return Task.objects.filter(created_by=self.request.user)
+    queryset = Task.objects.all()
 
 
 __all__ = ("TaskListAPIView",)
