@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import DesktopDownload, MobileDownload
 
-# Register your models here.
+admin.site.register(DesktopDownload)
+admin.site.register(MobileDownload)
