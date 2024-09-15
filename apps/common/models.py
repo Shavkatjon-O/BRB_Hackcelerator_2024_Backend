@@ -25,22 +25,22 @@ from rest_framework import generics
 class DesktopDownloadSerializer(serializers.ModelSerializer):
     class Meta:
         model = DesktopDownload
-        fields = "__all__"
+        fields = ["file"]
 
 
 class MobileDownloadSerializer(serializers.ModelSerializer):
     class Meta:
         model = MobileDownload
-        fields = "__all__"
+        fields = ["file"]
 
 
-class DesktopDownloadDetailView(generics.RetrieveAPIView):
-    queryset = DesktopDownload.objects.all().first()
+class DesktopDownloadDetailView(generics.ListAPIView):
+    queryset = DesktopDownload.objects.all().order_by("-created_at")[:1]
     serializer_class = DesktopDownloadSerializer
     permission_classes = [AllowAny]
 
 
-class MobileDownloadDetailView(generics.RetrieveAPIView):
-    queryset = MobileDownload.objects.all().first()
+class MobileDownloadDetailView(generics.ListAPIView):
+    queryset = MobileDownload.objects.all().order_by("-created_at")[:1]
     serializer_class = MobileDownloadSerializer
     permission_classes = [AllowAny]
