@@ -3,14 +3,15 @@ from core.settings.base import *
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    ".brb-titans.uz",
+    # ".brb-titans.uz",
+    "brb.falconsoft.uz",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://www.brb-titans.uz",
-    "https://admin.brb-titans.uz",
+    "https://brb.falconsoft.uz",
     "wss://www.brb-titans.uz",
-    "wss://admin.brb-titans.uz",
+    "wss://brb.falconsoft.uz",
 ]
 CSRF_COOKIE_SECURE = True
 
@@ -30,7 +31,7 @@ LOGGER_CHAT_ID = env.str("LOGGER_CHAT_ID")
 
 CORS_ALLOWED_ORIGINS = [
     "https://www.brb-titans.uz",
-    "https://admin.brb-titans.uz",
+    "https://brb.falconsoft.uz",
 ]
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
